@@ -7,7 +7,7 @@ using app1.OgranciVeri;
 using app1.Models;
 
 namespace app1.Controllers
-{
+{   
     public class OgrenciController : Controller
     {
         // GET: Ogrenci
@@ -47,7 +47,7 @@ namespace app1.Controllers
                 OgrenciData.OgrenciList.Add(eklenecekOgrenci);
 
 
-                return View();
+                return RedirectToAction("OgrenciListele");      
 
             }
             catch
@@ -59,23 +59,27 @@ namespace app1.Controllers
         // GET: Ogrenci/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var ogr = OgranciVeri.OgrenciData.OgrenciList.Where(s => s.Id == id).FirstOrDefault();
+            //var ogr = OgranciVeri.OgrenciData.OgrenciList.Where(s => s.Id == id).FirstOrDefault();
+            return View(ogr);
         }
 
         // POST: Ogrenci/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Ogrenci ogr)
         {
-            try
-            {
-                // TODO: Add update logic here
+            var adi = ogr.Adi;
+            var soyadi = ogr.Soyadi;
+            var bolum = ogr.BolumAdi;
+            var fakul = ogr.Fakultesi;
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var ogrenci = OgranciVeri.OgrenciData.OgrenciList.Where(s => s.Id == ogr.Id).FirstOrDefault();
+            OgranciVeri.OgrenciData.OgrenciList.Remove(ogrenci);
+            OgranciVeri.OgrenciData.OgrenciList.Add(ogr);
+
+            return RedirectToAction("OgrenciListele");
+
+
         }
 
         // GET: Ogrenci/Delete/5

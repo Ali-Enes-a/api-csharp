@@ -16,8 +16,6 @@ namespace app1.Models
 
         [DisplayName("Fakültesi :")]
         public string FakulteAdi { get; set; }
-        public virtual Fakulte Fakultesi { get; set; }
-
-        public ICollection<Ogrenci> Ogrenciler { get; set; }
+        
     }
 }

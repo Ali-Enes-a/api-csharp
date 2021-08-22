@@ -9,7 +9,7 @@ namespace app1.FakulteVeri
     public class FakulteData
     {
         public static List<Fakulte> FakulteList = new List<Fakulte>()
-            {
+        {
 
 
             new Fakulte
@@ -26,7 +26,7 @@ namespace app1.FakulteVeri
 
                 }
 
-            };
+        };
             
 
     }
